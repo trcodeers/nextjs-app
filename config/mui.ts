@@ -3,10 +3,10 @@ import { createTheme, ThemeOptions } from '@mui/material/styles';
 
 const theme: ThemeOptions = createTheme({
     palette: {
-        mode: 'light',
+        mode: 'dark',
         primary: {
           main: '#3fb580',
-          dark: '#a4a2a2',
+          dark: '#000000',
           light: '#7f8784',
           contrastText: 'rgba(4,4,4,0.87)',
         },
@@ -23,13 +23,12 @@ const theme: ThemeOptions = createTheme({
           dark: '#155817',
           contrastText: 'rgba(8,8,8,0.87)',
         },
+        background:{
+            default: "#fff"
+        }, 
         info:{
             main: '#32ce38'
-        },
-        background: {
-          default: '#2b2a2a',
-          paper: '#3d3d3d',
-        },
+        }
       },
       typography: {
         subtitle1: {
