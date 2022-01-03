@@ -8,7 +8,7 @@ import { Paper } from '@mui/material';
 function MyApp({ Component, pageProps }: AppProps) {
   return (
           <ThemeProvider theme={theme}>
-            <Paper elevation={0} style={{ minHeight: '100vh'}}>
+            <Paper elevation={0} square={true} style={{ minHeight: '100vh'}}>
               <Layout>
                   <Component {...pageProps} />
               </Layout>
