@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import Link from 'next/link'
 import styles from '../styles/Home.module.css'
+import Button from '@mui/material/Button';
 
 const Home: NextPage = () => {
   return (
@@ -9,12 +10,12 @@ const Home: NextPage = () => {
       <ul>
       <li>
         <Link href="/">
-          <a>Home</a>
+        <Button variant="outlined">Outlined</Button>
         </Link>
       </li>
       <li>
         <Link href="/about">
-          <a>About Us</a>
+          <Button variant="contained">About Us</Button>
         </Link>
       </li>
     </ul>
