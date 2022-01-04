@@ -15,6 +15,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import AppHeader from './appHeader';
+import { styled, useTheme } from '@mui/material/styles';
 
 const drawerWidth = 240;
 
@@ -29,10 +30,12 @@ interface Props {
 export default function AppDrawer(props: Props) {
   const { window, children } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [desktopOpen, setDesktopOpen] = React.useState(true);
 
   const handleDrawerToggle = () => {
       console.log('click on toggle...')
     setMobileOpen(!mobileOpen);
+    setDesktopOpen(!desktopOpen)
   };
 
   const drawer = (
@@ -62,7 +65,33 @@ export default function AppDrawer(props: Props) {
       </List>
     </div>
   );
-
+  const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })<{
+    open?: boolean;
+  }>(({ theme, open }) => ({
+    flexGrow: 1,
+    padding: theme.spacing(3),
+    transition: theme.transitions.create('margin', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    marginLeft: `-${drawerWidth}px`,
+    ...(open && {
+      transition: theme.transitions.create('margin', {
+        easing: theme.transitions.easing.easeOut,
+        duration: theme.transitions.duration.enteringScreen,
+      }),
+      marginLeft: 0,
+    }),
+  }));
+  
+const DrawerHeader = styled('div')(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  padding: theme.spacing(0, 1),
+  // necessary for content to be below app bar
+  ...theme.mixins.toolbar,
+  justifyContent: 'flex-end',
+}));
   const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
@@ -119,18 +148,15 @@ export default function AppDrawer(props: Props) {
             display: { xs: 'none', sm: 'block' },
             '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
           }}
-          open={mobileOpen}
+          open={desktopOpen}
         >
           {drawer}
         </Drawer>
       </Box>
-      <Box
-        component="main"
-        sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
-      >
-          <Toolbar/>
+      <Main open={desktopOpen}>
+        <DrawerHeader />
           {children}
-      </Box>
+      </Main>    
     </Box>
   );
 }
