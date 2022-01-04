@@ -21,6 +21,7 @@ import { Paper } from '@mui/material';
 import { BorderStyle } from '@mui/icons-material';
 import { route } from 'next/dist/server/router';
 import Link from 'next/link';
+import {useRouter} from 'next/router';
 
 const drawerWidth = 240;
 
@@ -45,6 +46,7 @@ export default function AppDrawer(props: Props) {
 
   const { window, children } = props;
   const classes = useStyles();
+  const router = useRouter()
 
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [desktopOpen, setDesktopOpen] = React.useState(true);
@@ -60,8 +62,8 @@ export default function AppDrawer(props: Props) {
       <Divider />
       <List>
         {routes.map((route, index) => (
-          <Link href={route.path} passHref>
-            <ListItem button key={route.label}>
+          <Link key={route.path} href={route.path} passHref>
+            <ListItem button selected={ route.path === router.pathname } key={route.label}>
               <ListItemText primary={route.label} />
             </ListItem>
           </Link>
