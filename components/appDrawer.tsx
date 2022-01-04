@@ -70,23 +70,23 @@ export default function AppDrawer(props: Props) {
       <AppBar
         position="fixed"
         sx={{
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
+          width: { sm: `calc(100%)` },
           ml: { sm: `${drawerWidth}px` },
         }}
         style={{zIndex:1301}}
 >
-        <Toolbar>
+<Toolbar>
           <IconButton
-            color="inherit"
-            aria-label="open drawer"
+            size="large"
             edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: 'none' } }}
+            color="inherit"
+            aria-label="menu"
+            sx={{ mr: 2 }}
           >
-            <MenuIcon />
+            <MenuIcon onClick={handleDrawerToggle} />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Responsive drawer
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            News
           </Typography>
         </Toolbar>
       </AppBar>
@@ -98,7 +98,7 @@ export default function AppDrawer(props: Props) {
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Drawer
           container={container}
-          variant="temporary"
+          variant="persistent"
           open={mobileOpen}
           onClose={handleDrawerToggle}
           ModalProps={{
