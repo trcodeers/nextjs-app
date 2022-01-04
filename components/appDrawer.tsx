@@ -19,6 +19,8 @@ import { styled } from '@mui/material/styles';
 import { red } from '@mui/material/colors';
 import { Paper } from '@mui/material';
 import { BorderStyle } from '@mui/icons-material';
+import { route } from 'next/dist/server/router';
+import Link from 'next/link';
 
 const drawerWidth = 240;
 
@@ -35,7 +37,10 @@ const useStyles = makeStyles({
     borderStyle: 'hidden'
   },
 });
-
+const routes = [
+  {label: 'About', path: '/about'},
+  {label: 'Contact Us', path: '/contact-us'}
+]
 export default function AppDrawer(props: Props) {
 
   const { window, children } = props;
@@ -54,26 +59,15 @@ export default function AppDrawer(props: Props) {
       <Toolbar />
       <Divider />
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
+        {routes.map((route, index) => (
+          <Link href={route.path} passHref>
+            <ListItem button key={route.label}>
+              <ListItemText primary={route.label} />
+            </ListItem>
+          </Link>
         ))}
       </List>
       <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
     </div>
   );
 
