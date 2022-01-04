@@ -9,7 +9,6 @@ import MenuIcon from '@mui/icons-material/Menu';
 
 const AppHeader = () => {
   return (
-    <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
           <IconButton
@@ -27,7 +26,7 @@ const AppHeader = () => {
           <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>
-    </Box>
+        
   );
 }
 
