@@ -31,6 +31,7 @@ export default function AppDrawer(props: Props) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
+      console.log('click on toggle...')
     setMobileOpen(!mobileOpen);
   };
 
@@ -82,8 +83,9 @@ export default function AppDrawer(props: Props) {
             color="inherit"
             aria-label="menu"
             sx={{ mr: 2 }}
+            onClick={handleDrawerToggle}
           >
-            <MenuIcon onClick={handleDrawerToggle} />
+            <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             News
@@ -112,12 +114,12 @@ export default function AppDrawer(props: Props) {
           {drawer}
         </Drawer>
         <Drawer
-          variant="permanent"
+          variant="persistent"
           sx={{
             display: { xs: 'none', sm: 'block' },
             '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
           }}
-          open
+          open={mobileOpen}
         >
           {drawer}
         </Drawer>
