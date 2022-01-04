@@ -159,14 +159,10 @@ export default function AppDrawer(props: Props) {
           variant="persistent"
           sx={{
             display: { xs: 'none', sm: 'block' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth,  },
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth, borderStyle: 'hidden' },
              
           }}
           open={desktopOpen}
-          className={{
-            paper:{
-            BorderStyle: 'hidden'
-          }}}
         >
           {drawer}
         </Drawer>
