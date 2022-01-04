@@ -14,8 +14,11 @@ import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import AppHeader from './appHeader';
-import { styled, useTheme } from '@mui/material/styles';
+import { makeStyles } from '@mui/styles';
+import { styled } from '@mui/material/styles';
+import { red } from '@mui/material/colors';
+import { Paper } from '@mui/material';
+import { BorderStyle } from '@mui/icons-material';
 
 const drawerWidth = 240;
 
@@ -27,13 +30,21 @@ interface Props {
   window?: () => Window;
 }
 
+const useStyles = makeStyles({
+  paper: {
+    borderStyle: 'hidden'
+  },
+});
+
 export default function AppDrawer(props: Props) {
+
   const { window, children } = props;
+  const classes = useStyles();
+
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [desktopOpen, setDesktopOpen] = React.useState(true);
 
   const handleDrawerToggle = () => {
-      console.log('click on toggle...')
     setMobileOpen(!mobileOpen);
     setDesktopOpen(!desktopOpen)
   };
@@ -106,8 +117,8 @@ export default function AppDrawer(props: Props) {
           ml: { sm: `${drawerWidth}px` },
         }}
         style={{zIndex:1301}}
->
-<Toolbar>
+      >
+      <Toolbar>
           <IconButton
             size="large"
             edge="start"
@@ -148,9 +159,14 @@ export default function AppDrawer(props: Props) {
           variant="persistent"
           sx={{
             display: { xs: 'none', sm: 'block' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth,  },
+             
           }}
           open={desktopOpen}
+          className={{
+            paper:{
+            BorderStyle: 'hidden'
+          }}}
         >
           {drawer}
         </Drawer>
