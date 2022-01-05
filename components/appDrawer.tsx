@@ -5,21 +5,13 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { makeStyles } from '@mui/styles';
 import { styled } from '@mui/material/styles';
-import { red } from '@mui/material/colors';
-import { FormControlLabel, Paper, Stack, Switch } from '@mui/material';
-import { BorderStyle } from '@mui/icons-material';
-import { route } from 'next/dist/server/router';
 import Link from 'next/link';
 import {useRouter} from 'next/router';
 
@@ -133,11 +125,6 @@ export default function AppDrawer(props: Props) {
             News
           </Typography>
         </Toolbar>
-        {/* <Stack direction="row" spacing={1} alignItems="center">
-          <Typography>Off</Typography>
-          <Switch checked={darkModeStatus} onChange={darkModeHandle} name="antoine" />
-          <Typography>On</Typography>
-        </Stack> */}
       </AppBar>
       <Box
         component="nav"
