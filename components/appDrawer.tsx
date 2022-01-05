@@ -57,20 +57,21 @@ export default function AppDrawer(props: Props) {
   };
 
   const drawer = (
-    <div>
+    <>
       <Toolbar />
-      <Divider />
+      <div style={{ marginTop: '20px' }}>
       <List>
         {routes.map((route, index) => (
-          <Link key={route.path} href={route.path} passHref>
-            <ListItem button selected={ route.path === router.pathname } key={route.label}>
-              <ListItemText primary={route.label} />
-            </ListItem>
-          </Link>
+            <Link  key={route.path} href={route.path} passHref>
+              <ListItem style={{ display: 'flex', justifyContent:'center', borderRadius: '20px'}} button selected={ route.path === router.pathname } key={route.label}>
+                    {route.label}
+              </ListItem>
+            </Link>
         ))}
       </List>
+      </div>
       <Divider />
-    </div>
+    </>
   );
 
   const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })<{
