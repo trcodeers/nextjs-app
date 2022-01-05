@@ -17,7 +17,7 @@ import Typography from '@mui/material/Typography';
 import { makeStyles } from '@mui/styles';
 import { styled } from '@mui/material/styles';
 import { red } from '@mui/material/colors';
-import { Paper } from '@mui/material';
+import { FormControlLabel, Paper, Stack, Switch } from '@mui/material';
 import { BorderStyle } from '@mui/icons-material';
 import { route } from 'next/dist/server/router';
 import Link from 'next/link';
@@ -31,12 +31,11 @@ interface Props {
    * You won't need it on your project.
    */
   window?: () => Window;
+
 }
 
 const useStyles = makeStyles({
-  paper: {
-    borderStyle: 'hidden'
-  },
+
 });
 const routes = [
   {label: 'About', path: '/about'},
@@ -44,12 +43,18 @@ const routes = [
 ]
 export default function AppDrawer(props: Props) {
 
-  const { window, children } = props;
+  const { window, children, handleDarkModeChange } = props;
   const classes = useStyles();
   const router = useRouter()
 
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [desktopOpen, setDesktopOpen] = React.useState(true);
+  const [darkModeStatus, setDarkModeStatus] = React.useState(false);
+  
+  const darkModeHandle = (e: any) =>{
+    setDarkModeStatus(!darkModeStatus)
+    handleDarkModeChange(darkModeStatus)
+  }
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -59,7 +64,6 @@ export default function AppDrawer(props: Props) {
   const drawer = (
     <>
       <Toolbar />
-      <div style={{ marginTop: '20px' }}>
       <List>
         {routes.map((route, index) => (
             <Link  key={route.path} href={route.path} passHref>
@@ -69,7 +73,6 @@ export default function AppDrawer(props: Props) {
             </Link>
         ))}
       </List>
-      </div>
       <Divider />
     </>
   );
@@ -130,6 +133,11 @@ export default function AppDrawer(props: Props) {
             News
           </Typography>
         </Toolbar>
+        {/* <Stack direction="row" spacing={1} alignItems="center">
+          <Typography>Off</Typography>
+          <Switch checked={darkModeStatus} onChange={darkModeHandle} name="antoine" />
+          <Typography>On</Typography>
+        </Stack> */}
       </AppBar>
       <Box
         component="nav"

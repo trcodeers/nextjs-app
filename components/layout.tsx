@@ -2,10 +2,10 @@ import AppDrawer from './appDrawer';
 
 const Layout = (props: any) => {
     
-    const { children } = props
+    const { children, ...restprops } = props
     return (
       <div>
-        <AppDrawer>
+        <AppDrawer {...restprops}>
           {children}
         </AppDrawer>
       </div>
