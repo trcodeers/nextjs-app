@@ -18,11 +18,8 @@ import {useRouter} from 'next/router';
 const drawerWidth = 240;
 
 interface Props {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
   window?: () => Window;
+  childere: React.ReactNode
 
 }
 
@@ -35,7 +32,7 @@ const routes = [
 ]
 export default function AppDrawer(props: Props) {
 
-  const { window, children, handleDarkModeChange } = props;
+  const { window, children } = props;
   const classes = useStyles();
   const router = useRouter()
 
