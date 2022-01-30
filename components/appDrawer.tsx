@@ -19,8 +19,7 @@ const drawerWidth = 240;
 
 interface Props {
   window?: () => Window;
-  childere: React.ReactNode
-
+  children: React.ReactNode
 }
 
 const useStyles = makeStyles({
