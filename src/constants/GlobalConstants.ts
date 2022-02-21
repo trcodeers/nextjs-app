@@ -1,5 +1,10 @@
-const Values = { 
-    'APP_Name': 'App Name'
+export const GlobalConstants = {
+    'APP_Name': 'JEE Prep'
 }
 
-export default Values;
+export const Tabs = [
+    {label: 'About', route: '/about'},
+    {label: 'Contact Us', route: '/contact-us'}
+]
+
+

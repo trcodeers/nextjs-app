@@ -15,7 +15,7 @@ import { styled } from '@mui/material/styles';
 import Link from 'next/link';
 import {useRouter} from 'next/router';
 
-import GlobalConstants from "../constants/GlobalConstants";
+import { GlobalConstants, Tabs } from "../constants/GlobalConstants";
 
 const drawerWidth = 240;
 
@@ -55,10 +55,10 @@ export default function AppDrawer(props: Props) {
     <>
       <Toolbar />
       <List>
-        {routes.map((route, index) => (
-            <Link  key={route.path} href={route.path} passHref>
-              <ListItem style={{ display: 'flex', justifyContent:'center', borderRadius: '20px'}} button selected={ route.path === router.pathname } key={route.label}>
-                    {route.label}
+        {Tabs.map((tab: { label: string, route: string }) => (
+            <Link  key={tab.route} href={tab.route} passHref>
+              <ListItem style={{ display: 'flex', justifyContent:'center', borderRadius: '20px'}} button selected={ tab.route === router.pathname } key={tab.label}>
+                    {tab.label}
               </ListItem>
             </Link>
         ))}
