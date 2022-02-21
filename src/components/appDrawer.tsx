@@ -15,6 +15,8 @@ import { styled } from '@mui/material/styles';
 import Link from 'next/link';
 import {useRouter} from 'next/router';
 
+import GlobalConstants from "../constants/GlobalConstants";
+
 const drawerWidth = 240;
 
 interface Props {
@@ -118,7 +120,7 @@ export default function AppDrawer(props: Props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            News
+            {GlobalConstants.APP_Name}
           </Typography>
         </Toolbar>
       </AppBar>
