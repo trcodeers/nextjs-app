@@ -15,7 +15,7 @@ import { styled } from '@mui/material/styles';
 import Link from 'next/link';
 import {useRouter} from 'next/router';
 
-import { GlobalConstants, Tabs } from "../constants/GlobalConstants";
+import { GlobalConstants, Tabs } from "../../constants/GlobalConstants";
 
 const drawerWidth = 240;
 

@@ -18,15 +18,11 @@ import Typography from '@mui/material/Typography';
 const drawerWidth = 240;
 
 interface Props {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
   window?: () => Window;
   children: any
 }
 
-export default function ResponsiveDrawer(props: Props) {
+export default function MobileDrawer(props: Props) {
   const { window, children } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 

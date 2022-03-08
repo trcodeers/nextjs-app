@@ -1,8 +1,7 @@
 import { useEffect } from 'react';
-import AppDrawer from './appDrawer';
-import PersistentDrawerLeft from './desktopdrawer';
-import ResponsiveDrawer from './mobileDrawer';
-import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
+import DekstopDrawer from './Drawer/DekstopDrawer';
+import MobileDrawer from './Drawer/mobileDrawer';
+import { BrowserView, MobileView, isBrowser, isMobile, isDesktop } from 'react-device-detect';
 
 const Layout = (props: any) => {
     
@@ -13,23 +12,18 @@ const Layout = (props: any) => {
   
     const { children, ...restprops } = props
     return (
-      <div>
-            <PersistentDrawerLeft sx={{ display: { sm: 'none' } }} {...restprops}>
+      <>
+        {
+          isDesktop ? 
+            <DekstopDrawer {...restprops}>
               {children}
-            </PersistentDrawerLeft> 
-        {/* {
-          !isMobile ? 
-            <PersistentDrawerLeft sx={{ display: { sm: 'none' } }} {...restprops}>
-              {children}
-            </PersistentDrawerLeft> 
+            </DekstopDrawer> 
           :
-            <ResponsiveDrawer sx={{ display: { sm: 'none' } }} {...restprops}>
+            <MobileDrawer {...restprops}>
               {children}
-            </ResponsiveDrawer>
-        } */}
-  
-
-      </div>
+            </MobileDrawer>
+        }
+      </>
     );
 
 }
