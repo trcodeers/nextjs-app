@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useEffect } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -27,10 +27,12 @@ interface Props {
 const useStyles = makeStyles({
 
 });
+
 const routes = [
   {label: 'About', path: '/about'},
   {label: 'Contact Us', path: '/contact-us'}
 ]
+
 export default function AppDrawer(props: Props) {
 
   const { window, children } = props;
@@ -41,6 +43,11 @@ export default function AppDrawer(props: Props) {
   const [desktopOpen, setDesktopOpen] = React.useState(true);
   const [darkModeStatus, setDarkModeStatus] = React.useState(false);
   
+  useEffect(() => {
+    console.log('app drawer render');
+    
+  }, [])
+
   const darkModeHandle = (e: any) =>{
     setDarkModeStatus(!darkModeStatus)
     handleDarkModeChange(darkModeStatus)
@@ -49,7 +56,7 @@ export default function AppDrawer(props: Props) {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
     setDesktopOpen(!desktopOpen)
-  };
+  }
 
   const drawer = (
     <>
@@ -57,7 +64,7 @@ export default function AppDrawer(props: Props) {
       <List>
         {Tabs.map((tab: { label: string, route: string }) => (
             <Link  key={tab.route} href={tab.route} passHref>
-              <ListItem style={{ display: 'flex', justifyContent:'center', borderRadius: '20px'}} button selected={ tab.route === router.pathname } key={tab.label}>
+              <ListItem style={{ display: 'flex', justifyContent:'center', borderRadius: '20px'}} button selected = { tab.route === router.pathname } key={tab.label}>
                     {tab.label}
               </ListItem>
             </Link>
@@ -146,7 +153,7 @@ export default function AppDrawer(props: Props) {
           {drawer}
         </Drawer>
         <Drawer
-          variant="persistent"
+          variant="temporary"
           sx={{
             display: { xs: 'none', sm: 'block' },
             '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth, borderStyle: 'hidden' },
