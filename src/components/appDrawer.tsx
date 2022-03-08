@@ -98,7 +98,7 @@ export default function MiniDrawer(props: any) {
   const router = useRouter()
 
   const handleDrawerOpen = () => {
-    setOpen(true);
+    setOpen(!open);
   };
 
   const handleDrawerClose = () => {
@@ -108,9 +108,7 @@ export default function MiniDrawer(props: any) {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open}>
-        <Toolbar>
-          <IconButton
+      <IconButton
             color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
@@ -121,13 +119,25 @@ export default function MiniDrawer(props: any) {
             }}
           >
             <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" noWrap component="div">
+        </IconButton>
+       <AppBar
+        position="fixed"
+        sx={{
+          width: { sm: `calc(100%)` },
+          ml: { sm: `${drawerWidth}px` },
+        }}
+        style={{zIndex:1301}}
+      >
+
+        <Toolbar>
+          <Typography             onClick={handleDrawerOpen}
+ variant="h6" noWrap component="div">
             Mini variant drawer
           </Typography>
         </Toolbar>
       </AppBar>
-      <Drawer variant="permanent" open={open}>
+      
+      <Drawer variant="persistence" open={open}>
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
@@ -144,13 +154,12 @@ export default function MiniDrawer(props: any) {
           ))}
         </List>
       </Drawer>
+
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
         {children}
-        <Typography paragraph>
-          App drwer
-        </Typography>
       </Box>
+
     </Box>
   );
 }
