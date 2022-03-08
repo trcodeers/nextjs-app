@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import AppDrawer from './appDrawer';
 import PersistentDrawerLeft from './desktopdrawer';
 import ResponsiveDrawer from './mobileDrawer';
+import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
 
 const Layout = (props: any) => {
     
@@ -13,9 +14,21 @@ const Layout = (props: any) => {
     const { children, ...restprops } = props
     return (
       <div>
-        <ResponsiveDrawer sx={{ display: { sm: 'none' } }} {...restprops}>
-          {children}
-        </ResponsiveDrawer>
+            <PersistentDrawerLeft sx={{ display: { sm: 'none' } }} {...restprops}>
+              {children}
+            </PersistentDrawerLeft> 
+        {/* {
+          !isMobile ? 
+            <PersistentDrawerLeft sx={{ display: { sm: 'none' } }} {...restprops}>
+              {children}
+            </PersistentDrawerLeft> 
+          :
+            <ResponsiveDrawer sx={{ display: { sm: 'none' } }} {...restprops}>
+              {children}
+            </ResponsiveDrawer>
+        } */}
+  
+
       </div>
     );
 

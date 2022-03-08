@@ -70,8 +70,8 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }));
 
 export default function PersistentDrawerLeft(props: any) {
-  
-  const { children } = props;
+    
+  const { children } = props
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -79,30 +79,36 @@ export default function PersistentDrawerLeft(props: any) {
     setOpen(!open);
   };
 
+  const handleDrawerClose = () => {
+    setOpen(false);
+  };
+
   return (
     <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
-      <AppBar position="fixed" open={open} 
-        sx={{
-            width: { sm: `calc(100%)` },
-            ml: { sm: `${drawerWidth}px` },
-          }}
-          style={{zIndex:1301}}
-        >
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Persistent drawer
-          </Typography>
-        </Toolbar>
-      </AppBar>
+        <CssBaseline />
+        <AppBar
+            position="fixed"
+            sx={{
+                width: { sm: `calc(100%)` },
+                ml: { sm: `${drawerWidth}px` },
+            }}
+            style={{zIndex:1301}}
+        >        
+            <Toolbar>
+                <IconButton
+                    color="inherit"
+                    aria-label="open drawer"
+                    onClick={handleDrawerOpen}
+                    edge="start"
+                    // sx={{ mr: 2, ...(open && { display: 'none' }) }}
+                >
+                    <MenuIcon />
+                </IconButton>
+                <Typography variant="h6" noWrap component="div">
+                    Persistent drawer
+                </Typography>
+            </Toolbar>
+        </AppBar>
       <Drawer
         sx={{
           width: drawerWidth,
@@ -112,13 +118,29 @@ export default function PersistentDrawerLeft(props: any) {
             boxSizing: 'border-box',
           },
         }}
-        variant="temporary"
+        variant="persistent"
         anchor="left"
         open={open}
       >
-        <Toolbar />
+        <DrawerHeader>
+          <IconButton onClick={handleDrawerClose}>
+            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+          </IconButton>
+        </DrawerHeader>
+        <Divider />
         <List>
           {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+            <ListItem button key={text}>
+              <ListItemIcon>
+                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItem>
+          ))}
+        </List>
+        <Divider />
+        <List>
+          {['All mail', 'Trash', 'Spam'].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
@@ -130,7 +152,7 @@ export default function PersistentDrawerLeft(props: any) {
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
-        {children}
+            {children}
       </Main>
     </Box>
   );
