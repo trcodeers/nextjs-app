@@ -153,7 +153,7 @@ export default function AppDrawer(props: Props) {
           {drawer}
         </Drawer>
         <Drawer
-          variant="temporary"
+          variant="persistent"
           sx={{
             display: { xs: 'none', sm: 'block' },
             '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth, borderStyle: 'hidden' },
