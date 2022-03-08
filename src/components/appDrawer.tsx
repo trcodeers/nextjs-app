@@ -87,7 +87,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
       ...closedMixin(theme),
       '& .MuiDrawer-paper': closedMixin(theme),
     }),
-  }),
+  }), a
 );
 
 export default function MiniDrawer(props: any) {
@@ -163,3 +163,4 @@ export default function MiniDrawer(props: any) {
     </Box>
   );
 }
+
