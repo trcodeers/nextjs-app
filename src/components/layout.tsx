@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
 import AppDrawer from './appDrawer';
+import PersistentDrawerLeft from './desktopdrawer';
+import ResponsiveDrawer from './mobileDrawer';
 
 const Layout = (props: any) => {
     
@@ -11,9 +13,9 @@ const Layout = (props: any) => {
     const { children, ...restprops } = props
     return (
       <div>
-        <AppDrawer {...restprops}>
+        <PersistentDrawerLeft sx={{ display: { sm: 'none' } }} {...restprops}>
           {children}
-        </AppDrawer>
+        </PersistentDrawerLeft>
       </div>
     );
 
