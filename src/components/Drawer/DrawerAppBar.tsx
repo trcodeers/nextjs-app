@@ -5,23 +5,22 @@ const drawerWidth = 240;
 
 const DrawerAppBar = (props: any) =>{
 
-    const {handleDrawerToggle} = props
+    const { handleDrawerToggle } = props
     return(
         <AppBar
-        position="fixed"
-        sx={{
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
-          ml: { sm: `${drawerWidth}px` },
-        }}
-        style={{zIndex:1301}}
-      >
+            position="fixed"
+            sx={{
+            width: { sm: `calc(100% - ${drawerWidth}px)` },
+            ml: { sm: `${drawerWidth}px` },
+            }}
+            style={{zIndex:1301}}
+        >
         <Toolbar>
           <IconButton
             color="inherit"
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: 'none' } }}
           >
             <MenuIcon />
           </IconButton>
@@ -30,7 +29,6 @@ const DrawerAppBar = (props: any) =>{
           </Typography>
         </Toolbar>
       </AppBar>
-
     )
 }
 
