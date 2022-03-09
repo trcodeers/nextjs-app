@@ -64,15 +64,10 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 export default function DekstopDrawer(props: any) {
     
   const { children } = props
-  const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
 
   const handleDrawerOpen = () => {
     setOpen(!open);
-  };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
   };
 
   return (

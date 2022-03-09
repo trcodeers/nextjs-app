@@ -1,22 +1,23 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import Layout from '../components/layout'
-import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import theme from "../config/mui";
 import { Paper } from '@mui/material';
 import { useState } from 'react';
 import DarkModeContext from '../context/DarkModeContext';
+import { PaletteSettings } from '../config/setting';
 
 function MyApp({ Component, pageProps }: AppProps) {
 
   const [newTheme, setNewTheme] = useState(theme)
 
-
   const handleDarkModeChange = () => {
     setNewTheme(createTheme({
       ...newTheme,
       palette: {
-        mode: newTheme.palette?.mode === 'dark' ? 'light' : 'dark',
+        mode: newTheme.palette?.mode === 'light' ? 'dark' : 'light',
+        ...PaletteSettings        
       },
     }))
   }
