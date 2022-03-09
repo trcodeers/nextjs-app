@@ -8,6 +8,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import DrawerMenu from './DrawerMenu';
+import { SwipeableDrawer } from '@mui/material';
 
 const drawerWidth = 240;
 
@@ -43,6 +44,7 @@ export default function MobileDrawer(props: Props) {
             edge="start"
             onClick={handleDrawerToggle}
             sx={{ mr: 2, display: { sm: 'none' } }}
+            size='large'
           >
             <MenuIcon />
           </IconButton>
@@ -56,11 +58,12 @@ export default function MobileDrawer(props: Props) {
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
         aria-label="mailbox folders"
       >
-        <Drawer
+        <SwipeableDrawer
           container={container}
           variant="temporary"
           open={mobileOpen}
           onClose={handleDrawerToggle}
+          onOpen={() => setMobileOpen(true)}
           ModalProps={{
             keepMounted: true, // Better open performance on mobile.
           }}
@@ -71,7 +74,7 @@ export default function MobileDrawer(props: Props) {
         >
           <Toolbar />
           <DrawerMenu onListItemClick={() => setMobileOpen(false)} />
-        </Drawer>
+        </SwipeableDrawer>
         <Drawer
           variant="permanent"
           sx={{
