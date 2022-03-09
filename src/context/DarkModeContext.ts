@@ -1,5 +1,4 @@
-import React from "react";
+import { createContext } from "react";
 
-const DarkModeContext = React.createContext();
-
+const DarkModeContext = createContext<any>('')
 export default DarkModeContext;

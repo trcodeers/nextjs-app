@@ -16,29 +16,16 @@ function MyApp({ Component, pageProps }: AppProps) {
   
   }
 
-  useEffect(() =>{
-     console.log(newTheme.palette?.mode);
-    setNewTheme({
-      ...newTheme,
-      palette: {
-        ...newTheme.palette,
-        mode: 'dark'
-      }
-    })
-   }, [])
-
-  useEffect(() =>{
-     console.log(newTheme);
-   }, [newTheme])
+  const [user, setUser] = useState("Jesse Hall");
 
   return (
-          <DarkModeContext.Provider value={handleDarkModeChange}>
+          <DarkModeContext.Provider value={{user, handleDarkModeChange}}>
             <ThemeProvider theme={newTheme}>
-              <Paper elevation={0} square={true} style={{ minHeight: '100vh'}}>
-                <Layout>
-                    <Component {...pageProps} />
-                </Layout>
-              </Paper>
+                  <Paper elevation={0} square={true} style={{ minHeight: '100vh'}}>
+                    <Layout>
+                        <Component {...pageProps} />
+                    </Layout>
+                  </Paper>
             </ThemeProvider>
           </DarkModeContext.Provider>
         )
