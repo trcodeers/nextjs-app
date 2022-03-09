@@ -1,9 +1,9 @@
 
-const getAuthToken = (): string => {
+export const getAuthToken = (): string => {
     return 'Auth token '
 }
 
-const getUser = (): void => {
+export const getUser = (): void => {
     try {
         
     } catch (error) {
@@ -11,9 +11,6 @@ const getUser = (): void => {
     }
 }
 
-const storeuser = () => {
+export const storeuser = () => {
     
 }
-
-const authSrvice = { getAuthToken, getUser }
-export default authSrvice;
