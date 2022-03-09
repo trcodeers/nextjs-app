@@ -1,14 +1,31 @@
-import AppDrawer from './appDrawer';
+import { useEffect, useState } from 'react';
+import DekstopDrawer from './Drawer/DekstopDrawer';
+import MobileDrawer from "./Drawer/MobileDrawer";
+import { isDesktop } from 'react-device-detect';
 
 const Layout = (props: any) => {
     
-    const { children, ...restprops } = props
+    const [viewPort, setViewPort] = useState<String>()
+    
+    useEffect(() =>{
+     setViewPort(isDesktop ? 'dekstop' : 'mobile')
+    }, [])
+  
+    const { children, ...restprops } = props;
+    
     return (
-      <div>
-        <AppDrawer {...restprops}>
+      <>
+        {viewPort !== 'dekstop' && <MobileDrawer {...restprops}>
           {children}
-        </AppDrawer>
-      </div>
+        </MobileDrawer>
+        }
+      
+        {viewPort === 'dekstop' && 
+            <DekstopDrawer {...restprops}>
+              {children}
+            </DekstopDrawer> 
+        }   
+      </>
     );
 
 }

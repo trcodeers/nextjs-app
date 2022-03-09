@@ -12,10 +12,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   const handleDarkModeChange = (value: boolean) => {
     console.log(value)
-    setNewTheme({
-      ...newTheme,
-      mode: value ? 'dark' : 'light'
-    })
+  
   }
 
   return (

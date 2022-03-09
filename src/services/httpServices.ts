@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getAuthToken } from "./authService";
+import {getAuthToken} from "./authService";
 
 const httpService = {
     get : axios.get,
