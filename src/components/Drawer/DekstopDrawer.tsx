@@ -122,11 +122,7 @@ export default function DekstopDrawer(props: any) {
         anchor="left"
         open={open}
       >
-        <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-          </IconButton>
-        </DrawerHeader>
+        <DrawerHeader/>
         <DrawerMenu/>
       </Drawer>
       <Main open={open}>
