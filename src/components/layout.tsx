@@ -5,7 +5,7 @@ import { isDesktop } from 'react-device-detect';
 
 const Layout = (props: any) => {
     
-    const [viewPort, setViewPort] = useState('mobile')
+    const [viewPort, setViewPort] = useState<String>()
     
     useEffect(() =>{
      setViewPort(isDesktop ? 'dekstop' : 'mobile')
