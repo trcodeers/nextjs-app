@@ -14,7 +14,7 @@ const Layout = (props: any) => {
     return (
       <>
         {
-          !isDesktop ? 
+          isDesktop ? 
             <DekstopDrawer {...restprops}>
               {children}
             </DekstopDrawer> 
