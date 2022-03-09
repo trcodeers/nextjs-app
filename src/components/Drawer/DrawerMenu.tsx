@@ -1,10 +1,10 @@
 import { useContext } from "react";
-import {  List, ListItem, ListItemText } from "@mui/material";
+import {  FormControlLabel, List, ListItem, ListItemText, Switch } from "@mui/material";
 import {useRouter} from 'next/router';
 import Link from 'next/link';
 import { Tabs } from "../../constants/GlobalConstants";
 import DarkModeContext from "../../context/DarkModeContext";
-
+ 
 type Props = {
     onListItemClick?: () => void
 }
@@ -12,7 +12,7 @@ const DrawerMenu = (props: Props) =>{
 
     const { onListItemClick } = props
     const router = useRouter()
-    const { handleDarkModeChange } = useContext<any>(DarkModeContext);
+    const {  handleDarkModeChange } = useContext(DarkModeContext);
 
     return (
         <>
@@ -26,7 +26,12 @@ const DrawerMenu = (props: Props) =>{
                         </ListItem>
                     </Link>
                 ))}
-                <p onClick={() => handleDarkModeChange()}>Dark</p>
+                <FormControlLabel
+                    value="top"
+                    control={<Switch onChange={handleDarkModeChange} color="primary" />}
+                    label="Dark Mode"
+                    labelPlacement="top"
+                />
             </List>
         </>
       );
