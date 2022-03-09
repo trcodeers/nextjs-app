@@ -26,13 +26,15 @@ const DrawerMenu = (props: Props) =>{
                         </ListItem>
                     </Link>
                 ))}
+            </List>
+            <div style={{ position: 'absolute', bottom: '10px' }}>
                 <FormControlLabel
                     value="top"
                     control={<Switch onChange={handleDarkModeChange} color="primary" />}
                     label="Dark Mode"
                     labelPlacement="top"
                 />
-            </List>
+            </div>
         </>
       );
  } 
