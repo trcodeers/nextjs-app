@@ -1,34 +1,30 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import DekstopDrawer from './Drawer/DekstopDrawer';
+import MobileDrawer from "./Drawer/MobileDrawer";
 import { isDesktop } from 'react-device-detect';
-import MobileDrawer from './Drawer/MobileDrawer';
 
 const Layout = (props: any) => {
     
-  useEffect(() =>{
-    console.log('Layout rtendered');
+    const [viewPort, setViewPort] = useState('mobile')
     
-  }, [])
+    useEffect(() =>{
+     setViewPort(isDesktop ? 'dekstop' : 'mobile')
+    }, [])
   
-    const { children, ...restprops } = props
+    const { children, ...restprops } = props;
+    
     return (
       <>
-            <MobileDrawer {...restprops}>
+        {viewPort !== 'dekstop' && <MobileDrawer {...restprops}>
           {children}
         </MobileDrawer>
-      {/* {!isDesktop &&
-        <MobileDrawer {...restprops}>
-          {children}
-        </MobileDrawer>
-
-      }
-      {
-        isDesktop && 
-          <DekstopDrawer {...restprops}>
-            {children}
-          </DekstopDrawer> 
-      } */}
-         
+        }
+      
+        {viewPort === 'dekstop' && 
+            <DekstopDrawer {...restprops}>
+              {children}
+            </DekstopDrawer> 
+        }   
       </>
     );
 
