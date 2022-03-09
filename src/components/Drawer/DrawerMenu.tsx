@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Tabs } from "../../constants/GlobalConstants";
 
 type Props = {
-    onListItemClick: () => void
+    onListItemClick?: () => void
 }
 const DrawerMenu = (props: Props) =>{
 
