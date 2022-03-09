@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import DekstopDrawer from './Drawer/DekstopDrawer';
-import MobileDrawer from './Drawer/mobileDrawer';
 import { BrowserView, MobileView, isBrowser, isMobile, isDesktop } from 'react-device-detect';
+import MobileDrawer from './Drawer/MobileDrawer';
 
 const Layout = (props: any) => {
     
