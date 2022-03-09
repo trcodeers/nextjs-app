@@ -1,5 +1,5 @@
 export const GlobalConstants = {
-    'APP_Name': 'JEE Prep'
+    'APP_Name': 'App Name'
 }
 
 export const Tabs = [

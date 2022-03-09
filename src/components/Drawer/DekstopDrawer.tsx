@@ -9,6 +9,8 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import DrawerMenu from './DrawerMenu';
+import Link from 'next/link';
+import { GlobalConstants } from '../../constants/GlobalConstants';
 
 const drawerWidth = 240;
 
@@ -91,7 +93,9 @@ export default function DekstopDrawer(props: any) {
                     <MenuIcon />
                 </IconButton>
                 <Typography variant="h6" noWrap component="div">
-                    Persistent drawer
+                <Link href={'/'}> 
+                  {GlobalConstants.APP_Name}
+                </Link> 
                 </Typography>
             </Toolbar>
         </AppBar>

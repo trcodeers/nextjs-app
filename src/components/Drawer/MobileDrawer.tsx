@@ -9,6 +9,8 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import DrawerMenu from './DrawerMenu';
 import { SwipeableDrawer } from '@mui/material';
+import Link from 'next/link';
+import { GlobalConstants } from '../../constants/GlobalConstants';
 
 const drawerWidth = 240;
 
@@ -51,7 +53,9 @@ export default function MobileDrawer(props: Props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Responsive drawer
+            <Link href={'/'}> 
+                {GlobalConstants.APP_Name}
+            </Link> 
           </Typography>
         </Toolbar>
       </AppBar>
