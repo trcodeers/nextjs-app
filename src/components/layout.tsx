@@ -15,7 +15,7 @@ const Layout = (props: any) => {
     
     return (
       <>
-        {viewPort !== 'dekstop' && 
+        {viewPort && viewPort !== 'dekstop' && 
             <MobileDrawer
               {...restprops}
             >
@@ -23,7 +23,7 @@ const Layout = (props: any) => {
         </MobileDrawer>
         }
       
-        {viewPort === 'dekstop' && 
+        {viewPort && viewPort === 'dekstop' && 
             <DekstopDrawer
               {...restprops}
             >
