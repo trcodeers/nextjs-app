@@ -13,7 +13,7 @@ const customerData = [
 const Home: NextPage = () => {
  
   useEffect(() =>{
-    storeObject('customers', customerData)
+    storeObject('customers', customerData, 'ssn')
   }, [])
  
   return (
