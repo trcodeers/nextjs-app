@@ -1,6 +1,6 @@
 
 
-export const storeObject = (dbName: string, customerData: Array<any>) =>{
+export const storeObject = (dbName: string, customerData: Array<any>, keyPath?: any, indexValue?:Array<{}> ) =>{
     
     // Open the indexedDB.
     const request = indexedDB.open(dbName);
@@ -9,14 +9,13 @@ export const storeObject = (dbName: string, customerData: Array<any>) =>{
 
         const db = event.target.result;
 
-        const objStore = db.createObjectStore(dbName, { autoIncrement : true });
+        const objStore = db.createObjectStore(dbName, keyPath ? { keyPath: keyPath } : {autoIncrement : true});
 
         customerData.forEach(function(customer) {
                 objStore.add(customer);
         });
 
     };
-
 
 }
 
