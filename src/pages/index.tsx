@@ -3,7 +3,7 @@ import Link from "next/link";
 import styles from "../styles/Home.module.css";
 import Button from "@mui/material/Button";
 import { useEffect, useState } from "react";
-import { storeObject } from "../services/indexDBService";
+import { retriveData, storeObject } from "../services/indexDBService";
 
 const customerData = [
   { ssn: "444-44-4444", name: "Bill", age: 35, email: "bill@company.com" },
@@ -13,7 +13,7 @@ const customerData = [
 const Home: NextPage = () => {
  
   useEffect(() =>{
-    storeObject('customers', customerData, 'ssn')
+   console.log(retriveData('customers'))
   }, [])
  
   return (

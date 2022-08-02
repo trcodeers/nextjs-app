@@ -31,6 +31,29 @@ export const storeObject = (dbName: string, data: Array<any>, keyPath?: any, ind
 
 }
 
-export const RetriveData = () =>{
+export const retriveData = (dbName: string) =>{
+
+    const request = indexedDB.open(dbName);
+    let result
+
+     request.onsuccess = async(event: any) => {
+
+        const db = event.target.result;
+
+        const transaction = db.transaction([dbName]);
+        const objectStore = transaction.objectStore(dbName);
+        const data = objectStore.getAll();
+        
+     data.onsuccess = (ev: any) =>{
+            return ev.target.result
+        }
+    }
+
+    return result
+    
+}
+
+
+export const removeData = () =>{
 
 }
