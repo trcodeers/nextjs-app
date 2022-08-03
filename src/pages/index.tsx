@@ -3,26 +3,37 @@ import Link from "next/link";
 import styles from "../styles/Home.module.css";
 import Button from "@mui/material/Button";
 import { useEffect, useState } from "react";
-import { retriveData, storeObject } from "../services/indexDBService";
+import IndexedDb from "../services/indexDb";
 
-const customerData = [
-  { ssn: "444-44-4444", name: "Bill", age: 35, email: "bill@company.com" },
-  { ssn: "555-55-5555", name: "Donna", age: 32, email: "donna@home.org" }
-];
 
 const Home: NextPage = () => {
  
-  useEffect(() =>{
-   console.log(retriveData('customers'))
-  }, [])
- 
+  useEffect(() => {
+      const runIndexDb = async () => {
+        const indexedDb = new IndexedDb('test');
+        await indexedDb.createObjectStore(['books', 'students']);
+        await indexedDb.putValue('books', { name: 'A Game of Thrones' });
+        await indexedDb.putBulkValue('books', [{ name: 'A Song of Fire and Ice' }, { name: 'Harry Potter and the Chamber of Secrets' }]);
+        await indexedDb.getValue('books', 1);
+        await indexedDb.getAllValue('books');
+        await indexedDb.deleteValue('books', 1);
+    }
+    // runIndexDb();
+}, []);
+
+const add = async() =>{
+  const indexedDb = new IndexedDb('test');
+  await indexedDb.putValue('books', { name: 'A Game of Thrones' });
+
+}
+
   return (
     <div className={styles.container}>
       This is from Home...
       <ul>
         <li>
           <Link href="/">
-            <Button variant="outlined">Outlined</Button>
+            <Button onClick={add} variant="outlined">Outlined</Button>
           </Link>
         </li>
         <li>
