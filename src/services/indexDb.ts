@@ -6,13 +6,13 @@ class IndexedDb {
 
     constructor(database: string) {
         this.database = database;
-        // this.openDB(database)
+        this.initDB(database)
     }
 
-    // public async openDB(datab: any) {
-    //     this.db = await openDB(datab);
-    //     console.log('Opening...')
-    // }
+    public async initDB(datab: any) {
+        this.db = await openDB(datab);
+        console.log('Opening...')
+    }
 
     public async createObjectStore(tableNames: string[]) {
         try {
