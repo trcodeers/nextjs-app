@@ -1,6 +1,7 @@
+import { GlobalConstants } from './../constants/GlobalConstants';
 import { openDB } from 'idb';
 
-const dbPromise = openDB('keyval-store', 1, {
+const dbPromise = openDB(GlobalConstants.APP_Name, 1, {
   upgrade(db) {
     db.createObjectStore('keyval');
   },
