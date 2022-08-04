@@ -10,8 +10,8 @@ const Home: NextPage = () => {
  
   useEffect(() => {
       const runIndexDb = async () => {
-        set('article', [{ x: 'r', y: 'po', z: 'poiuy' }, { x: 'r', y: 'po', z: 'poiuy' }])
-        console.log(await getAll('article',))
+        // set('article', [{ x: 'r', y: 'po', z: 'poiuy' }, { x: 'r', y: 'po', z: 'poiuy' }])
+        // console.log(await getAll('article',))
       }
     runIndexDb();
 }, []);
