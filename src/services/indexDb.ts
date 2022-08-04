@@ -1,4 +1,4 @@
-import { GlobalConstants } from './../constants/GlobalConstants';
+import { GlobalConstants } from '../constants/GlobalConstants';
 import { openDB,  } from 'idb';
 
 const defaultTableName = 'keyval'
@@ -14,6 +14,10 @@ export const createStore = (dbName: string, tableName: string) =>{
             db.createObjectStore(tableName);
         }
     })
+}
+
+export const initDB = (dbName: string) => {
+    return openDB(dbName, 1, {});
 }
 
 export async function get(key: any, tableName: string = defaultTableName, db: any = dbPromise) {
