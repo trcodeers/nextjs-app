@@ -2,8 +2,8 @@ import type { NextPage } from "next";
 import Link from "next/link";
 import styles from "../styles/Home.module.css";
 import Button from "@mui/material/Button";
-import { useEffect, useState } from "react";
-import { getAll, set } from "../services/indexDb";
+import { useEffect } from "react";
+import { getAll, set } from "../services/indexDB";
 
 
 const Home: NextPage = () => {
