@@ -3,7 +3,7 @@ import Link from "next/link";
 import styles from "../styles/Home.module.css";
 import Button from "@mui/material/Button";
 import { useEffect, useState } from "react";
-import {set} from "../services/indexDb";
+import {get, set, createStore, getAll} from "../services/indexDb";
 
 
 const Home: NextPage = () => {
@@ -11,8 +11,10 @@ const Home: NextPage = () => {
   useEffect(() => {
       const runIndexDb = async () => {
         set('article', [{ x: 'r', y: 'po', z: 'poiuy' }, { x: 'r', y: 'po', z: 'poiuy' }])
-        set('users', [{ x: 'r', y: 'po', z: 'poiuy' }, { x: 'r', y: 'po', z: 'poiuy' }])
-        
+       console.log(await getAll('article',))
+        // set('uio', [{ x: 'r', y: 'po', z: 'poiuy' }, { x: 'r', y: 'po', z: 'poiuy' }])
+        // createStore('p', 'op')
+      //  console.log(await get('article'))
       }
     runIndexDb();
 }, []);
