@@ -3,29 +3,17 @@ import Link from "next/link";
 import styles from "../styles/Home.module.css";
 import Button from "@mui/material/Button";
 import { useEffect, useState } from "react";
-import IndexedDb from "../services/indexDb";
+import {set} from "../services/indexDb";
 
 
 const Home: NextPage = () => {
  
   useEffect(() => {
       const runIndexDb = async () => {
-        const indexedDb = new IndexedDb('test');
-        await indexedDb.createObjectStore(['books', 'students']);
-        await indexedDb.putValue('books', { name: 'A Game of Thrones' });
-        await indexedDb.putBulkValue('books', [{ name: 'A Song of Fire and Ice' }, { name: 'Harry Potter and the Chamber of Secrets' }]);
-        await indexedDb.getValue('books', 1);
-        await indexedDb.getAllValue('books');
-        await indexedDb.deleteValue('books', 1);
+        
     }
-    // runIndexDb();
+    runIndexDb();
 }, []);
-
-const add = async() =>{
-  const indexedDb = new IndexedDb('test');
-  await indexedDb.putValue('books', { name: 'A Game of Thrones' });
-
-}
 
   return (
     <div className={styles.container}>
@@ -33,7 +21,7 @@ const add = async() =>{
       <ul>
         <li>
           <Link href="/">
-            <Button onClick={add} variant="outlined">Outlined</Button>
+            <Button variant="outlined">Outlined</Button>
           </Link>
         </li>
         <li>
